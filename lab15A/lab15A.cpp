@@ -49,3 +49,27 @@ char character(char start, int offset) {
 
 	return result;
 }
+
+//Main driver
+int main() {
+	char inputs[] = { 'a','a','Z','?' };
+	int offsets[] = { 1,-1,-1,5 };
+
+	for (int i = 0; i < 4; i++) {
+		try {
+			char result = character(inputs[i], offsets[i]);
+			cout << "character(" << inputs[i] << ", " << offsets[i] << ") = " << result << endl;
+		}
+		catch (invalidCharacterException& e) {
+			cout << "Error: " << e.what() << endl;
+		}
+		catch (invalidRangeException& e) {
+			cout << "Error: " << e.what() << endl;
+		}
+	}
+
+	cout << "Press enter to exit . . .";
+	cin.ignore();
+	cin.get();
+	return 0;
+}
